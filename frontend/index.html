@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandy AI Friend</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <div class="auth-container" id="auth-container">
+            <div class="auth-box">
+                <h1>Mandy AI Friend</h1>
+                <div class="tabs">
+                    <button class="tab-btn active" id="login-tab">Login</button>
+                    <button class="tab-btn" id="register-tab">Register</button>
+                </div>
+                
+                <div class="form-container" id="login-form">
+                    <div class="input-group">
+                        <label for="login-username">Username</label>
+                        <input type="text" id="login-username" placeholder="Enter your username">
+                    </div>
+                    <div class="input-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" placeholder="Enter your password">
+                    </div>
+                    <button class="primary-btn" id="login-btn">Login</button>
+                    <p class="error-message" id="login-error"></p>
+                </div>
+                
+                <div class="form-container hidden" id="register-form">
+                    <div class="input-group">
+                        <label for="register-username">Username</label>
+                        <input type="text" id="register-username" placeholder="Choose a username">
+                    </div>
+                    <div class="input-group">
+                        <label for="register-password">Password</label>
+                        <input type="password" id="register-password" placeholder="Choose a password">
+                    </div>
+                    <div class="input-group">
+                        <label for="register-confirm">Confirm Password</label>
+                        <input type="password" id="register-confirm" placeholder="Confirm your password">
+                    </div>
+                    <button class="primary-btn" id="register-btn">Register</button>
+                    <p class="error-message" id="register-error"></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chat-container hidden" id="chat-container">
+            <div class="chat-header">
+                <h2>Chat with Mandy</h2>
+                <button class="logout-btn" id="logout-btn">Logout</button>
+            </div>
+            
+            <div class="chat-messages" id="chat-messages">
+                <div class="message assistant">
+                    <div class="message-content">
+                        <p>Hi there! I'm Mandy, CEO of Mindely. How are you doing today?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chat-input">
+                <textarea id="message-input" placeholder="Type your message here..."></textarea>
+                <button id="send-btn">Send</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

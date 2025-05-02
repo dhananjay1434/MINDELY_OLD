@@ -1,0 +1,151 @@
+# AI Friend Application
+
+A human-like AI friend that feels more natural and real in conversations, with a modern web interface.
+
+## Features
+
+- Natural conversation with human-like qualities
+- Dual memory system (short-term and long-term)
+- Emotional understanding and appropriate responses
+- User authentication system
+- Modern responsive web interface
+- API-based architecture with separate frontend and backend
+
+## Project Structure
+
+```
+.
+├── backend/               # Flask API backend
+│   ├── app.py             # Main Flask application
+│   ├── Procfile           # For deployment on Heroku/Render
+│   ├── requirements.txt   # Python dependencies
+│   ├── runtime.txt        # Python version specification
+│   ├── .env.example       # Example environment variables
+│   └── .env               # Environment variables (not committed)
+│
+└── frontend/              # Frontend web application
+    ├── index.html         # Main HTML file
+    ├── styles.css         # CSS styles
+    ├── app.js             # Frontend JavaScript
+    └── netlify.toml       # Netlify configuration
+```
+
+## Prerequisites
+
+- Python 3.10 or higher
+- Google Gemini API key (get one from [Google AI Studio](https://ai.google.dev/))
+- Node.js and npm (optional, for local frontend development)
+
+## Local Development Setup
+
+### Backend Setup
+
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
+
+2. Create a virtual environment:
+   ```bash
+   python -m venv venv
+   ```
+
+3. Activate the virtual environment:
+   - Windows: `venv\Scripts\activate`
+   - macOS/Linux: `source venv/bin/activate`
+
+4. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+5. Create a `.env` file based on `.env.example`:
+   ```bash
+   cp .env.example .env
+   ```
+
+6. Edit the `.env` file and add your Gemini API key:
+   ```
+   GEMINI_API_KEY=your_api_key_here
+   ```
+
+7. Run the backend server:
+   ```bash
+   python app.py
+   ```
+
+The backend will be available at http://localhost:5000
+
+### Frontend Setup
+
+1. Navigate to the frontend directory:
+   ```bash
+   cd frontend
+   ```
+
+2. Open `app.js` and update the API_URL to point to your local backend:
+   ```javascript
+   const API_URL = 'http://localhost:5000/api';
+   ```
+
+3. Open `index.html` in your browser or use a local server:
+   ```bash
+   # If you have Python installed:
+   python -m http.server 8000
+   ```
+
+The frontend will be available at http://localhost:8000
+
+## Deployment
+
+### Backend Deployment (Render.com)
+
+1. Push your code to GitHub
+2. Create an account on [Render.com](https://render.com/)
+3. Create a new Web Service and connect your GitHub repository
+4. Configure the service:
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `gunicorn app:app`
+   - Add environment variables from your `.env` file
+
+### Frontend Deployment (Netlify)
+
+1. Update the API_URL in `app.js` to point to your deployed backend
+2. Create an account on [Netlify](https://netlify.com/)
+3. Deploy manually by dragging and dropping your frontend folder
+
+For detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md)
+
+## API Documentation
+
+### Authentication Endpoints
+
+- `POST /api/register` - Register a new user
+- `POST /api/login` - Login a user
+
+### Chat Endpoints
+
+- `POST /api/chat` - Send a message to the AI
+- `GET /api/history` - Get chat history for a user
+
+### Health Check
+
+- `GET /api/health` - Check if the API is running
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature-name`
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Acknowledgments
+
+- Google Gemini API for the AI capabilities
+- Flask for the backend framework
+- Netlify and Render for hosting services
